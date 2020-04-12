@@ -1,9 +1,3 @@
-/*
- * ptpd_dep.c
- *
- * Created: 13.6.2018 20.24.05
- *  Author: baumgah1
- */
 #include "ptpd_dep.h"
 #include "stm32h7xx_hal_eth.h"
 
