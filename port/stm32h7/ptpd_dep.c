@@ -52,21 +52,27 @@
 #define ADJ_FREQ_BASE_ADDEND      0x35455A81
 #define ADJ_FREQ_BASE_INCREMENT   43
 
-static u32_t ETH_PTPNanoSecond2SubSecond(u32_t SubSecondValue)
+static u32_t ETH_PTPNanoSecond2SubSecond(u32_t NanoSecondValue)
 {
-	uint64_t val = SubSecondValue * 0x80000000ll;
+	uint64_t val = NanoSecondValue * 0x80000000ll;
 	val /= 1000000000;
+	return val;
+}
+
+static u32_t ETH_PTPSubSecond2NanoSecond(u32_t SubSecondValue)
+{
+	uint64_t val = ((uint64_t)SubSecondValue * 1000000000) / 0x80000000ll;
 	return val;
 }
 
 void ETH_PTPTime_GetTime(struct ptptime_t * timestamp)
 {
 	timestamp->tv_sec = ETH->MACSTSR;
-	timestamp->tv_nsec = ETH->MACSTNR;
+	timestamp->tv_nsec = ETH_PTPSubSecond2NanoSecond(ETH->MACSTNR);
 	if(timestamp->tv_sec != ETH->MACSTSR)
 	{
 		timestamp->tv_sec = ETH->MACSTSR;
-		timestamp->tv_nsec = ETH->MACSTNR;
+		timestamp->tv_nsec = ETH_PTPSubSecond2NanoSecond(ETH->MACSTNR);
 	}
 }
 
