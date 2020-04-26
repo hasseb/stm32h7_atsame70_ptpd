@@ -3,9 +3,9 @@
 IEEE 1588 PTP daemon for STM32H7 and ATSAME70 microcontrollers. The software is tested to work with LWIP 2.x.
 
 ## Usage
-1. Enable IGMP in LWIP and make sure it is working. Typically this is done by defining LWIP_IGMP to 1 in lwipopts.h. You typically need to enable IGMP in your network interface as well (for example netif->flags |= NETIF_FLAG_IGMP).
-2. Copy-paste the ptp folder to your solution.
-3. From port folder copy the required ptpd_dep.c and ptpd_dep.h files to the ptp/dep folder.
+1. Enable IGMP in LWIP and make sure it is working. Typically this is done by defining LWIP_IGMP to 1 in _lwipopts.h_. You typically need to enable IGMP in your network interface as well (for example netif->flags |= NETIF_FLAG_IGMP).
+2. Copy-paste the _ptp_ folder to your solution.
+3. From _port_ folder copy _constants_dep.h_, _ptpd_dep.c_ and _ptpd_dep.h_ files to the _ptp/dep_ folder. From _port_ folder copy _constants.h_ to _ptp_ folder.
 4. Every 1 ms update the PTPD timers, for example as below
     ```
     // ptpd timers
