@@ -1,6 +1,6 @@
 # IEEE 1588 PTPD FOR EMBEDDED MICROCONTROLLERS STM32H7 AND ATSAME70
 
-IEEE 1588 PTP daemon for STM32H7 and ATSAME70 microcontrollers. The software is tested to work with LWIP 2.x.
+This is an old implementation, look at the new version [here](https://github.com/hasseb/stm32h7_ptpd). IEEE 1588 PTP daemon for STM32H7 and ATSAME70 microcontrollers. The software is tested to work with LWIP 2.x.
 
 ## Usage
 1. Enable IGMP in LWIP and make sure it is working. Typically this is done by defining LWIP_IGMP to 1 in _lwipopts.h_. You typically need to enable IGMP in your network interface as well (for example netif->flags |= NETIF_FLAG_IGMP).
